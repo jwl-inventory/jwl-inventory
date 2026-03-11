@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+
+# Environment (never commit secrets)
+.env.local
+.env.*.local
+.env
+
+# Production
+build/
+
+# Misc
+.DS_Store
+*.pem
+.vercel
+*.log
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
