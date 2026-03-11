@@ -32,7 +32,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out/          # Next.js 14+ automatically outputs here
+          path: out/
 
       - uses: actions/deploy-pages@v4
         id: deployment
