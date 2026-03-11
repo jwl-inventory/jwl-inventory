@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const STAGES = [
+const STAGES = [
   'Inquiry',
   'Design',
   'Client Approval',
@@ -9,7 +9,7 @@ export const STAGES = [
   'Delivery',
 ] as const
 
-export type Stage = (typeof STAGES)[number]
+type Stage = (typeof STAGES)[number]
 
 const STAGE_COLORS: Record<Stage, string> = {
   'Inquiry':         'text-sky-400 bg-sky-400/10',
