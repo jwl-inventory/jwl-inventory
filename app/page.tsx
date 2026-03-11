@@ -25,6 +25,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 // ─── Waitlist form ────────────────────────────────────────────────────────────
+// Sign up at formspree.io, create a form, then replace the ID below.
+const FORMSPREE_URL = 'https://formspree.io/f/mgonkked'
 
 function WaitlistForm() {
   const [email, setEmail] = useState('')
@@ -36,19 +38,18 @@ function WaitlistForm() {
     if (!email) return
     setStatus('loading')
     try {
-      const res = await fetch('/api/waitlist', {
+      const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
-      const data = await res.json()
       if (res.ok) {
         setStatus('success')
-        setMessage(data.message ?? 'You\'re on the list. We\'ll be in touch.')
+        setMessage("You're on the list. We'll be in touch soon.")
         setEmail('')
       } else {
         setStatus('error')
-        setMessage(data.error ?? 'Something went wrong. Please try again.')
+        setMessage('Something went wrong. Please try again.')
       }
     } catch {
       setStatus('error')
