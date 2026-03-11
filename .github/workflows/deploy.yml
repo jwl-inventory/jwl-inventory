@@ -29,6 +29,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: npm run export    # <-- export static site to 'out/'
 
       - uses: actions/upload-pages-artifact@v3
         with:
