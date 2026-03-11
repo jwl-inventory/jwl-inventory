@@ -2,14 +2,25 @@
 
 Inventory management software for high-end jewelry ateliers.
 
-## Quick start
+## Local dev setup
 
 ```bash
+# 1. Install deps
 npm install
+
+# 2. Create a local Postgres database
+createdb jwl
+
+# 3. Run the schema
+psql jwl < migrations/001_init.sql
+
+# 4. Start the dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — landing page with waitlist.
+Open [http://localhost:3000](http://localhost:3000).
+
+`.env.local` ships with `DATABASE_URL=postgres://localhost:5432/jwl` — the only env var needed locally.
 
 ## Project layout
 
@@ -21,17 +32,17 @@ jwl/
 │   ├── inventory/page.tsx    # Piece inventory
 │   ├── orders/page.tsx       # Custom order workflow
 │   ├── clients/page.tsx      # Client records
-│   └── api/waitlist/route.ts # Email capture endpoint
-├── lib/supabase/             # DB client (browser + server)
-├── supabase/migrations/      # PostgreSQL schema
+│   └── api/waitlist/route.ts # Email capture → writes to waitlist table
+├── lib/db.ts                 # postgres client (single pool)
+├── migrations/001_init.sql   # Full schema
 └── outreach/                 # Phase 2 & 3 templates
 ```
 
-## Setup
+## Production deploy (Vercel)
 
-1. **Supabase** — create a project, run `supabase/migrations/001_init.sql`, copy keys to `.env.local`
-2. **Resend** (optional) — sign up at resend.com, add API key to `.env.local`, uncomment the Resend block in `app/api/waitlist/route.ts`
-3. **Deploy** — push to GitHub, connect to Vercel, add env vars in the Vercel dashboard
+1. Add a managed Postgres (Neon, Railway, Render, or any provider)
+2. Set `DATABASE_URL` in Vercel env vars — nothing else needed
+3. Run migrations against the production DB once
 
 ## Roadmap
 
@@ -40,5 +51,5 @@ jwl/
 | Landing page + waitlist | ✅ Built |
 | Outreach campaign | 📋 Templates ready |
 | Discovery interviews | 📋 Guide ready |
-| MVP app (dashboard, inventory, orders, clients) | 🏗 Shell ready, needs DB wiring |
+| MVP app shell | 🏗 Ready, needs DB wiring per page |
 | Stripe billing | — |

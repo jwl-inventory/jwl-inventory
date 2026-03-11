@@ -270,26 +270,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Social Proof placeholder ── */}
-      <section className="py-28 px-6 bg-obsidian-900/40">
-        <div className="max-w-4xl mx-auto text-center">
-          <SectionLabel>Built for Makers</SectionLabel>
-          <DiamondDivider />
-
-          <blockquote className="font-serif text-2xl sm:text-3xl text-cream/80 mt-12 leading-relaxed italic">
-            &ldquo;We&rsquo;ve been on the waitlist since day one.
-            Finally, someone understands that a sapphire isn&rsquo;t
-            just a &lsquo;blue stone&rsquo; — it has a story.&rdquo;
-          </blockquote>
-
-          <div className="mt-8">
-            <DiamondDivider />
-            <p className="text-obsidian-500 text-xs tracking-widest mt-4 uppercase">
-              — Goldsmith, Private Atelier · Paris
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* ── CTA / Waitlist ── */}
       <section id="waitlist" className="py-32 px-6 relative overflow-hidden">
